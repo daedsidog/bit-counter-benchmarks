@@ -1,38 +1,62 @@
-Benchmark 1: bin/clang-plb < string.txt
-  Time (mean ± σ):      42.9 ms ±   0.8 ms    [User: 40.7 ms, System: 1.6 ms]
-  Range (min … max):    41.5 ms …  45.3 ms    30 runs
+Benchmark 1: bin/opt-clang-plb < string.txt
+  Time (mean ± σ):      48.5 ms ±   1.3 ms    [User: 46.9 ms, System: 1.7 ms]
+  Range (min … max):    46.9 ms …  54.8 ms    30 runs
 
 Benchmark 1: bin/rust-plb < string.txt
-  Time (mean ± σ):     133.1 ms ±   1.6 ms    [User: 128.0 ms, System: 5.1 ms]
-  Range (min … max):   129.0 ms … 135.8 ms    30 runs
+  Time (mean ± σ):     120.7 ms ±   0.9 ms    [User: 119.4 ms, System: 1.2 ms]
+  Range (min … max):   119.9 ms … 123.8 ms    30 runs
 
-Benchmark 1: bin/gcc-plb < string.txt
-  Time (mean ± σ):     187.5 ms ±   2.1 ms    [User: 184.1 ms, System: 3.4 ms]
-  Range (min … max):   184.4 ms … 193.4 ms    30 runs
+Benchmark 1: bin/opt-gcc-plb < string.txt
+  Time (mean ± σ):     188.7 ms ±   3.3 ms    [User: 185.3 ms, System: 3.4 ms]
+  Range (min … max):   185.1 ms … 203.9 ms    30 runs
+
+Benchmark 1: bin/clang-ecl-inline-c-plb < string.txt
+  Time (mean ± σ):     199.4 ms ±   7.9 ms    [User: 181.6 ms, System: 31.6 ms]
+  Range (min … max):   191.5 ms … 238.0 ms    30 runs
 
 Benchmark 1: bin/inline-c-ecl-plb < string.txt
   Time (mean ± σ):     200.7 ms ±   5.1 ms    [User: 180.3 ms, System: 33.8 ms]
   Range (min … max):   185.5 ms … 211.7 ms    30 runs
 
+Benchmark 1: bin/opt-clang-ecl-inline-c-plb < string.txt
+  Time (mean ± σ):     201.0 ms ±   8.8 ms    [User: 180.9 ms, System: 32.7 ms]
+  Range (min … max):   188.9 ms … 240.6 ms    30 runs
+
+Benchmark 1: bin/opt-gcc-ecl-inline-c-plb < string.txt
+  Time (mean ± σ):     279.9 ms ±   4.5 ms    [User: 266.7 ms, System: 26.2 ms]
+  Range (min … max):   273.5 ms … 288.4 ms    30 runs
+
 Benchmark 1: java -cp bin plb < string.txt
-  Time (mean ± σ):     324.4 ms ±  15.9 ms    [User: 318.1 ms, System: 19.2 ms]
-  Range (min … max):   253.8 ms … 345.9 ms    30 runs
+  Time (mean ± σ):     319.8 ms ±  17.7 ms    [User: 314.2 ms, System: 17.6 ms]
+  Range (min … max):   253.3 ms … 329.9 ms    30 runs
+
+Benchmark 1: bin/gcc-ecl-inline-c-plb < string.txt
+  Time (mean ± σ):     345.7 ms ±   4.5 ms    [User: 325.2 ms, System: 34.4 ms]
+  Range (min … max):   337.1 ms … 351.3 ms    30 runs
+
+Benchmark 1: bin/clang-plb < string.txt
+  Time (mean ± σ):     354.9 ms ±   3.6 ms    [User: 352.2 ms, System: 2.7 ms]
+  Range (min … max):   348.3 ms … 361.1 ms    30 runs
+
+Benchmark 1: bin/gcc-plb < string.txt
+  Time (mean ± σ):     355.9 ms ±   3.9 ms    [User: 353.7 ms, System: 2.1 ms]
+  Range (min … max):   348.0 ms … 365.6 ms    30 runs
 
 Benchmark 1: bin/sbcl-plb < string.txt
-  Time (mean ± σ):     372.8 ms ±   6.7 ms    [User: 369.2 ms, System: 3.4 ms]
-  Range (min … max):   353.5 ms … 378.4 ms    30 runs
+  Time (mean ± σ):     360.7 ms ±   3.4 ms    [User: 357.4 ms, System: 3.2 ms]
+  Range (min … max):   355.4 ms … 367.7 ms    30 runs
 
-Benchmark 1: bin/inline-c-mf-plb < string.txt
-  Time (mean ± σ):     938.8 ms ±  14.5 ms    [User: 935.9 ms, System: 2.7 ms]
-  Range (min … max):   913.2 ms … 980.3 ms    30 runs
+Benchmark 1: bin/mf-inline-c-plb  < string.txt
+  Time (mean ± σ):     928.4 ms ±   6.9 ms    [User: 921.2 ms, System: 7.2 ms]
+  Range (min … max):   916.8 ms … 940.4 ms    30 runs
+
+Benchmark 1: bin/mf-plb  < string.txt
+  Time (mean ± σ):      2.591 s ±  0.073 s    [User: 1.182 s, System: 1.409 s]
+  Range (min … max):    2.518 s …  2.711 s    30 runs
 
 Benchmark 1: gforth-fast src/forth/plb.fs < string.txt
   Time (mean ± σ):      2.782 s ±  0.051 s    [User: 1.392 s, System: 1.390 s]
   Range (min … max):    2.707 s …  2.918 s    30 runs
-
-Benchmark 1: bin/mf-plb < string.txt
-  Time (mean ± σ):      2.812 s ±  0.053 s    [User: 1.461 s, System: 1.351 s]
-  Range (min … max):    2.745 s …  2.969 s    30 runs
 
 Benchmark 1: bin/vfxf-plb < string.txt
   Time (mean ± σ):      3.670 s ±  0.049 s    [User: 1.524 s, System: 2.146 s]
@@ -42,9 +66,21 @@ Benchmark 1: gforth src/forth/plb.fs < string.txt
   Time (mean ± σ):      3.875 s ±  0.086 s    [User: 2.422 s, System: 1.453 s]
   Range (min … max):    3.778 s …  4.159 s    30 runs
 
-Benchmark 1: bin/ecl-plb < string.txt
-  Time (mean ± σ):      4.067 s ±  0.290 s    [User: 2.448 s, System: 1.632 s]
-  Range (min … max):    3.837 s …  5.531 s    30 runs
+Benchmark 1: bin/clang-ecl-plb < string.txt
+  Time (mean ± σ):      3.942 s ±  0.061 s    [User: 2.324 s, System: 1.631 s]
+  Range (min … max):    3.884 s …  4.095 s    30 runs
+
+Benchmark 1: bin/gcc-ecl-plb < string.txt
+  Time (mean ± σ):      4.005 s ±  0.071 s    [User: 2.352 s, System: 1.665 s]
+  Range (min … max):    3.874 s …  4.171 s    30 runs
+
+Benchmark 1: bin/opt-gcc-ecl-plb < string.txt
+  Time (mean ± σ):      4.099 s ±  0.056 s    [User: 2.416 s, System: 1.695 s]
+  Range (min … max):    4.034 s …  4.239 s    30 runs
+
+Benchmark 1: bin/opt-clang-ecl-plb < string.txt
+  Time (mean ± σ):      4.124 s ±  0.309 s    [User: 2.433 s, System: 1.704 s]
+  Range (min … max):    3.862 s …  4.845 s    30 runs
 
 Benchmark 1: python src/python/plb.py < string.txt
   Time (mean ± σ):      4.280 s ±  0.101 s    [User: 4.269 s, System: 0.011 s]
