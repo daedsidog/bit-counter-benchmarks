@@ -2,6 +2,7 @@ GCC = gcc
 CLANG = clang
 GCC_OPTFLAGS = -O3 -Ofast -flto -march=native -ffast-math -funroll-loops -ftree-vectorize -fpredictive-commoning
 CLANG_OPTFLAGS = -O3 -Ofast -flto -march=native -ffast-math -funroll-loops -fvectorize -ftree-vectorize
+GAMBIT = gambitc
 BIN_DIR = bin
 GCC_ECL_BIN = gcc-ecl-plb
 GCC_ECL_INLINE_C_BIN = gcc-ecl-inline-c-plb
@@ -88,7 +89,7 @@ JAVA = javac
 RUSTC = rustc
 RUST_FLAGS = -C opt-level=3 -C lto -C codegen-units=1 -C target-cpu=native
 
-all: | $(BIN_DIR) gcc opt-gcc clang opt-clang sbcl all-gcc-ecl all-clang-ecl java rust
+all: | $(BIN_DIR) gcc opt-gcc clang opt-clang sbcl all-gcc-ecl all-clang-ecl java rust gambit
 
 $(BIN_DIR):
 	mkdir -p $@
@@ -105,9 +106,12 @@ clang: $(BIN_DIR) src/c/plb.c
 opt-clang: $(BIN_DIR) src/c/plb.c
 	$(CLANG) $(CLANG_OPTFLAGS) src/c/plb.c -o $(BIN_DIR)/opt-clang-plb
 
+gambit: $(BIN_DIR) src/scheme/gambit-plb.ss
+	$(GAMBIT) -exe -o ${BIN_DIR}/gambit-plb src/scheme/gambit-plb.ss
+
 sbcl: $(BIN_DIR) src/lisp/plb.lisp
 	sbcl --load src/lisp/plb.lisp \
-	     --eval "(save-lisp-and-die \"$(BIN_DIR)/sbcl-plb\" :toplevel #'main :executable t)"
+	     --eval "(save-lisp-and-die \"$(BIN_DIR)/sbcl-plb\" :toplevel #'main :executable t :purify t :compression t)"
 
 all-clang-ecl: clang-ecl clang-ecl-inline-c opt-clang-ecl opt-clang-ecl-inline-c
 
