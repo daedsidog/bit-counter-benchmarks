@@ -16,10 +16,11 @@ string.txt: ASCII text, with very long lines (65536), with no line terminators
 | Rust                 | **120.7 ms** ± 0.9 ms  | 119.4 ms | 1.2 ms  | `bin/rust-plb < string.txt`                     |
 | Opt. C GCC           | **188.7 ms** ± 3.3 ms  | 185.3 ms | 3.4 ms  | `bin/opt-gcc-plb < string.txt`                  |
 | Lisp ECL /w inline C | **199.4 ms** ± 7.9 ms  | 181.6 ms | 31.6 ms | `bin/clang-ecl-inline-c-plb < string.txt`       |
+| Java                 | **319.8 ms** ± 17.7 ms | 314.2 ms | 17.6 ms | `java -cp bin plb < string.txt`                 |
 | C Clang              | **354.9 ms** ± 3.6 ms  | 352.2 ms | 2.7 ms  | `bin/clang-plb < string.txt`                    |
 | C GCC                | **355.9 ms** ± 3.9 ms  | 353.7 ms | 2.1 ms  | `bin/gcc-plb < string.txt`                      |
 | Lisp SBCL            | **360.7 ms** ± 3.4 ms  | 357.4 ms | 3.2 ms  | `bin/sbcl-plb < string.txt`                     |
-| Java                 | **319.8 ms** ± 17.7 ms | 314.2 ms | 17.6 ms | `java -cp bin plb < string.txt`                 |
+| Python PyPy3         | **646.1 ms** ± 19.8 ms | 632.6 ms | 11.9 ms | `pypy3 src/python/plb.py < string.txt`          |
 | MinForth /w inline C | **928.4 ms** ± 6.9 ms  | 921.2 ms | 7.2 ms  | `bin/mf-inline-c-plb < string.txt`              |
 | Chez Scheme          | **1258 ms** ± 29 ms    | 1206 ms  | 119 ms  | `chez --script src/scheme/chez.ss < string.txt` |
 | Gambit Scheme        | **1331 ms** ± 28 ms    | 1276 ms  | 115 ms  | `bin/gambit-plb < string.txt`                   |
@@ -28,7 +29,7 @@ string.txt: ASCII text, with very long lines (65536), with no line terminators
 | VFX Forth            | **3.670 s** ± 0.049 s  | 1.524 s  | 2.146 s | `bin/vfxf-plb < string.txt`                     |
 | GForth               | **3.875 s** ± 0.086 s  | 2.422 s  | 1.453 s | `gforth src/forth/plb.fs < string.txt`          |
 | Lisp ECL             | **3.942 s** ± 0.061 s  | 2.324 s  | 1.631 s | `bin/clang-ecl-plb < string.txt`                |
-| Python               | **4.280 s** ± 0.101 s  | 4.269 s  | 0.011 s | `python src/python/plb.py < string.txt`         |
+| Python CPython       | **4.280 s** ± 0.101 s  | 4.269 s  | 0.011 s | `python src/python/plb.py < string.txt`         |
 
 * All benchmarks were measured via `hyperfine` with 30 runs and 5 warmup runs.
 * MinForth C targets were compiled with Clang & the forthcoming compiler flags.
@@ -86,6 +87,10 @@ rustc 1.81.0 (eeb90cda1 2024-09-04) (Arch Linux rust 1:1.81.0-1)
 
 $ python --version
 Python 3.12.7
+
+$ pypy3 --version
+Python 3.10.14 (39dc8d3c85a7, Aug 30 2024, 08:27:45)
+[PyPy 7.3.17 with GCC 14.2.1 20240805]
 
 $ java --version
 openjdk 23 2024-09-17
