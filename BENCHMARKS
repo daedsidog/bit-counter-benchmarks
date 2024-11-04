@@ -46,6 +46,10 @@ Benchmark 1: bin/sbcl-plb < string.txt
   Time (mean ± σ):     360.7 ms ±   3.4 ms    [User: 357.4 ms, System: 3.2 ms]
   Range (min … max):   355.4 ms … 367.7 ms    30 runs
 
+Benchmark 1: pypy3 src/python/plb.py < string.txt
+  Time (mean ± σ):     646.1 ms ±  19.8 ms    [User: 632.6 ms, System: 11.9 ms]
+  Range (min … max):   619.8 ms … 696.6 ms    30 runs
+
 Benchmark 1: bin/mf-inline-c-plb  < string.txt
   Time (mean ± σ):     928.4 ms ±   6.9 ms    [User: 921.2 ms, System: 7.2 ms]
   Range (min … max):   916.8 ms … 940.4 ms    30 runs
