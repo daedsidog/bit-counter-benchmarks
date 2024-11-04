@@ -10,9 +10,13 @@ string.txt: ASCII text, with very long lines (65536), with no line terminators
 
 ## Benchmarks
 
+> [!IMPORTANT]
+> The Lisp ECL /w inline C result should be taken with a massive grain of salt, as all I did there was embed the C solution as inline code, just to see how it would perform, after I was rather disappointed with the pure ECL solution. This also applies to the MinForth /w inline C, as end code is almost entirly undistinguishable from the idiomatic C. Because Forth is very minimal, it is not surprising that the performance is roughly the same.
+
 | Name                 | Time (mean ± σ)        | User     | System  | Command                                         |
 |----------------------|----------------------- |----------|---------|-------------------------------------------------|
 | Opt. C Clang         | **48.5 ms** ± 1.3 ms   | 46.9 ms  | 1.7 ms  | `bin/opt-clang-plb < string.txt`                |
+| MinForth /w inline C | **48.6 ms** ± 1.0 ms   | 46.4 ms  | 1.1 ms  | `bin/clang-inline-c-mf-plb < string.txt`        |
 | Rust                 | **120.7 ms** ± 0.9 ms  | 119.4 ms | 1.2 ms  | `bin/rust-plb < string.txt`                     |
 | Opt. C GCC           | **188.7 ms** ± 3.3 ms  | 185.3 ms | 3.4 ms  | `bin/opt-gcc-plb < string.txt`                  |
 | Lisp ECL /w inline C | **199.4 ms** ± 7.9 ms  | 181.6 ms | 31.6 ms | `bin/clang-ecl-inline-c-plb < string.txt`       |
@@ -21,7 +25,7 @@ string.txt: ASCII text, with very long lines (65536), with no line terminators
 | C GCC                | **355.9 ms** ± 3.9 ms  | 353.7 ms | 2.1 ms  | `bin/gcc-plb < string.txt`                      |
 | Lisp SBCL            | **360.7 ms** ± 3.4 ms  | 357.4 ms | 3.2 ms  | `bin/sbcl-plb < string.txt`                     |
 | Python PyPy3         | **646.1 ms** ± 19.8 ms | 632.6 ms | 11.9 ms | `pypy3 src/python/plb.py < string.txt`          |
-| MinForth /w inline C | **928.4 ms** ± 6.9 ms  | 921.2 ms | 7.2 ms  | `bin/mf-inline-c-plb < string.txt`              |
+| MinForth /w C FFI    | **928.4 ms** ± 6.9 ms  | 921.2 ms | 7.2 ms  | `bin/clang-c-ffi-mf-plb < string.txt`           |
 | Chez Scheme          | **1258 ms** ± 29 ms    | 1206 ms  | 119 ms  | `chez --script src/scheme/chez.ss < string.txt` |
 | Gambit Scheme        | **1331 ms** ± 28 ms    | 1276 ms  | 115 ms  | `bin/gambit-plb < string.txt`                   |
 | GForth (fast)        | **2.782 s** ± 0.051 s  | 1.392 s  | 1.390 s | `gforth-fast src/forth/plb.fs < string.txt`     |
@@ -33,8 +37,7 @@ string.txt: ASCII text, with very long lines (65536), with no line terminators
 
 * All benchmarks were measured via `hyperfine` with 30 runs and 5 warmup runs.
 * MinForth C targets were compiled with Clang & the forthcoming compiler flags.
-* The Lisp ECL /w inline C result should be taken with a massive grain of salt, as all I did there was embed the C solution as inline code, just to see how it would perform, after I was rather disappointed with the pure ECL solution.
-* Unlike the ECL /w inline C solution, the MinForth /w inline C only used inline C for reading the next char, and that's it. I consider it faithful.
+* Unlike the ECL/MinForth /w inline C solutions, the MinForth /w C FFI only used inline C for reading the next char, and that's it. I consider it faithful.
 * GCC optimization flags: `-O3 -Ofast -flto -march=native -ffast-math -funroll-loops -ftree-vectorize -fpredictive-commoning`
 * Clang optimization flags: `-O3 -Ofast -flto -march=native -ffast-math -funroll-loops -fvectorize -ftree-vectorize`
 * Rust optimization flags: `-C opt-level=3 -C lto -C codegen-units=1 -C target-cpu=native`
