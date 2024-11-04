@@ -2,6 +2,10 @@ Benchmark 1: bin/opt-clang-plb < string.txt
   Time (mean ± σ):      48.5 ms ±   1.3 ms    [User: 46.9 ms, System: 1.7 ms]
   Range (min … max):    46.9 ms …  54.8 ms    30 runs
 
+Benchmark 1: bin/clang-inline-c-mf-plb < string.txt
+  Time (mean ± σ):      48.6 ms ±   1.0 ms    [User: 47.2 ms, System: 1.1 ms]
+  Range (min … max):    46.4 ms …  51.6 ms    30 runs
+
 Benchmark 1: bin/rust-plb < string.txt
   Time (mean ± σ):     120.7 ms ±   0.9 ms    [User: 119.4 ms, System: 1.2 ms]
   Range (min … max):   119.9 ms … 123.8 ms    30 runs
@@ -50,7 +54,7 @@ Benchmark 1: pypy3 src/python/plb.py < string.txt
   Time (mean ± σ):     646.1 ms ±  19.8 ms    [User: 632.6 ms, System: 11.9 ms]
   Range (min … max):   619.8 ms … 696.6 ms    30 runs
 
-Benchmark 1: bin/mf-inline-c-plb  < string.txt
+Benchmark 1: bin/mf-c-ffi-plb  < string.txt
   Time (mean ± σ):     928.4 ms ±   6.9 ms    [User: 921.2 ms, System: 7.2 ms]
   Range (min … max):   916.8 ms … 940.4 ms    30 runs
 
@@ -62,7 +66,7 @@ Benchmark 1: bin/gambit-plb < string.txt
   Time (mean ± σ):      1.331 s ±  0.028 s    [User: 1.320 s, System: 0.010 s]
   Range (min … max):    1.276 s …  1.385 s    30 runs
 
-Benchmark 1: bin/mf-plb  < string.txt
+Benchmark 1: bin/clang-c-ffi-mf-plb  < string.txt
   Time (mean ± σ):      2.591 s ±  0.073 s    [User: 1.182 s, System: 1.409 s]
   Range (min … max):    2.518 s …  2.711 s    30 runs
 
