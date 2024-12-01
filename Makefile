@@ -89,10 +89,13 @@ JAVA = javac
 RUSTC = rustc
 RUST_FLAGS = -C opt-level=3 -C lto -C codegen-units=1 -C target-cpu=native
 
-all: | $(BIN_DIR) gcc opt-gcc clang opt-clang sbcl all-gcc-ecl all-clang-ecl java rust gambit
+all: | $(BIN_DIR) gcc opt-gcc clang opt-clang sbcl all-gcc-ecl all-clang-ecl java rust gambit transpiled-lisp-cpp
 
 $(BIN_DIR):
 	mkdir -p $@
+
+transpiled-lisp-cpp: $(BIN_DIR) src/cpp/transpiled-lisp-plb.cpp
+	clang++ $(CLANG_OPTFLAGS) src/cpp/transpiled-lisp-plb.cpp -o $(BIN_DIR)/transpiled-lisp-cpp-plb
 
 gcc: $(BIN_DIR) src/c/plb.c
 	$(GCC) src/c/plb.c -o $(BIN_DIR)/gcc-plb

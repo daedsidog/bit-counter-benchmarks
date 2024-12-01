@@ -14,7 +14,9 @@
                 (incf current-bits))))
     (when (> current-bits longest-bits)
       (setf longest-bits current-bits))
-    (format t "~A~%" longest-bits)))
+    (princ longest-bits)
+    (terpri)
+    #+cpp-transpiler 0))
 
 #+ecl
 (main)

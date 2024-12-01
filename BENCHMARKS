@@ -14,6 +14,10 @@ Benchmark 1: bin/opt-gcc-plb < string.txt
   Time (mean ± σ):     188.7 ms ±   3.3 ms    [User: 185.3 ms, System: 3.4 ms]
   Range (min … max):   185.1 ms … 203.9 ms    30 runs
 
+Benchmark 1: bin/transpiled-lisp-cpp-plb < string.txt
+  Time (mean ± σ):     192.1 ms ±   5.4 ms    [User: 189.4 ms, System: 2.6 ms]
+  Range (min … max):   185.0 ms … 208.1 ms    30 runs
+
 Benchmark 1: bin/clang-ecl-inline-c-plb < string.txt
   Time (mean ± σ):     199.4 ms ±   7.9 ms    [User: 181.6 ms, System: 31.6 ms]
   Range (min … max):   191.5 ms … 238.0 ms    30 runs
