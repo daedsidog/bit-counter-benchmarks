@@ -25,13 +25,13 @@ string.txt: ASCII text, with very long lines (65536), with no line terminators
 | C GCC                | **355.9 ms** ± 3.9 ms  | 353.7 ms | 2.1 ms  | `bin/gcc-plb < string.txt`                      |
 | Lisp SBCL            | **360.7 ms** ± 3.4 ms  | 357.4 ms | 3.2 ms  | `bin/sbcl-plb < string.txt`                     |
 | Python PyPy3         | **646.1 ms** ± 19.8 ms | 632.6 ms | 11.9 ms | `pypy3 src/python/plb.py < string.txt`          |
+| GForth (fast)        | **727.7 ms** ± 6.0 ms  | 720.9 ms  | 6.7 ms | `gforth-fast src/forth/plb.fs < string.txt`     |
 | C FFI MinForth       | **928.4 ms** ± 6.9 ms  | 921.2 ms | 7.2 ms  | `bin/clang-c-ffi-mf-plb < string.txt`           |
 | Chez Scheme          | **1258 ms** ± 29 ms    | 1206 ms  | 119 ms  | `chez --script src/scheme/chez.ss < string.txt` |
 | Gambit Scheme        | **1331 ms** ± 28 ms    | 1276 ms  | 115 ms  | `bin/gambit-plb < string.txt`                   |
-| GForth (fast)        | **2.782 s** ± 0.051 s  | 1.392 s  | 1.390 s | `gforth-fast src/forth/plb.fs < string.txt`     |
+| GForth               | **1.920 s** ± 0.025 s  | 1.912 s  | 0.007 s | `gforth src/forth/plb.fs < string.txt`          |
 | MinForth             | **2.591 s** ± 0.073 s  | 1.182 s  | 1.409 s | `bin/mf-plb < string.txt`                       |
 | VFX Forth            | **3.670 s** ± 0.049 s  | 1.524 s  | 2.146 s | `bin/vfxf-plb < string.txt`                     |
-| GForth               | **3.875 s** ± 0.086 s  | 2.422 s  | 1.453 s | `gforth src/forth/plb.fs < string.txt`          |
 | Lisp ECL             | **3.942 s** ± 0.061 s  | 2.324 s  | 1.631 s | `bin/clang-ecl-plb < string.txt`                |
 | Python CPython       | **4.280 s** ± 0.101 s  | 4.269 s  | 0.011 s | `python src/python/plb.py < string.txt`         |
 

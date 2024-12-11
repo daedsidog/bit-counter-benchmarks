@@ -1,6 +1,8 @@
-: next-byte ( -- byte )
-  stdin key-file
-  dup 10 = if drop 0 exit then ; 
+: next-byte ( -- char.byte | 0 )
+  begin
+    source >in @ /string if c@  1 >in +! exit then
+    ( c-addr ) drop refill 0= 
+  until 0 ;
 
 variable longest-bits
 variable current-bits
@@ -40,7 +42,7 @@ variable current-bits
   again ; ( )
 
 : main ( -- )
-  count-1s . cr ;
+  stdin [: refill drop count-1s . cr ;] execute-parsing-file ;
 
 main
 bye
